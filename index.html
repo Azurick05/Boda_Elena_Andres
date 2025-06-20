@@ -2,39 +2,112 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Boda Elena & Andrés</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elena & Andrés - Nuestra Boda</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #fff0f5;
-            color: #333;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: #f2f2ef;
+            color: #374709;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(rgba(242, 242, 239, 0.85), rgba(242, 242, 239, 0.85)),
+                url('https://images.unsplash.com/photo-1508973372093-c265f31e5e4b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             text-align: center;
-            padding: 40px;
+            padding: 20px;
         }
 
         h1 {
-            color: #c2185b;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            color: #374709;
+            margin-bottom: 0.5em;
         }
 
-        .box {
-            background: white;
-            padding: 30px;
-            margin: 40px auto;
+        h2 {
+            font-size: 1.8rem;
+            color: #ded3a6;
+            margin-bottom: 1em;
+        }
+
+        p {
+            font-size: 1.2rem;
             max-width: 600px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .scroll-down {
+            margin-top: 40px;
+        }
+
+        .scroll-button {
+            background: none;
+            border: 2px solid #374709;
+            color: #374709;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-button:hover {
+            background-color: #ded3a6;
+            color: white;
+            border-color: #ded3a6;
+        }
+
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #ffffff;
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            color: #374709;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #444;
         }
     </style>
 </head>
 
 <body>
-    <div class="box">
-        <h1>¡Nos casamos!</h1>
-        <p>Estás invitado a celebrar con nosotros este día tan especial.</p>
-        <p>Muy pronto tendrás aquí todos los detalles: fecha, lugar, confirmación y más 💍</p>
-    </div>
+    <section class="hero">
+        <h1>Elena & Andrés</h1>
+        <h2>¡Nos casamos!</h2>
+        <p>Estás invitado a compartir este día tan especial con nosotros.</p>
+        <div class="scroll-down">
+            <a href="#detalle">
+                <button class="scroll-button">Ver más</button>
+            </a>
+        </div>
+    </section>
+
+    <section class="section" id="detalle">
+        <h3>Reserva la fecha</h3>
+        <p>
+            El gran día será inolvidable, y nos encantará compartirlo contigo.
+            Muy pronto encontrarás aquí toda la información: lugar, hora, confirmación de asistencia y mucho más.
+        </p>
+    </section>
 </body>
 
 </html>
