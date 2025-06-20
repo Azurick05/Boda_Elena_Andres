@@ -4,28 +4,101 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cuenta atrás boda Elena & Andrés</title>
+    <title>Elena & Andrés - Nuestra Boda</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            margin: 0;
             font-family: 'Georgia', serif;
             background-color: #f2f2ef;
             color: #374709;
-            margin: 0;
-            padding: 40px 20px;
             text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(rgba(242, 242, 239, 0.85), rgba(242, 242, 239, 0.85)),
+                url('https://images.unsplash.com/photo-1508973372093-c265f31e5e4b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            padding: 20px;
         }
 
         h1 {
             font-size: 3rem;
-            margin-bottom: 10px;
+            color: #374709;
+            margin-bottom: 0.5em;
         }
 
+        h2 {
+            font-size: 1.8rem;
+            color: #ded3a6;
+            margin-bottom: 1em;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 1.5em auto;
+        }
+
+        .scroll-down {
+            margin-top: 40px;
+        }
+
+        .scroll-button {
+            background: none;
+            border: 2px solid #374709;
+            color: #374709;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-button:hover {
+            background-color: #ded3a6;
+            color: white;
+            border-color: #ded3a6;
+        }
+
+        .section {
+            padding: 80px 20px;
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(55, 71, 9, 0.1);
+        }
+
+        .section h3 {
+            font-size: 2rem;
+            color: #374709;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        /* Cuenta atrás */
         .countdown {
             display: flex;
             justify-content: center;
             gap: 30px;
             font-size: 2rem;
-            margin-top: 30px;
+            margin-top: 10px;
+            flex-wrap: wrap;
         }
 
         .countdown div {
@@ -60,13 +133,32 @@
 </head>
 
 <body>
-    <h1>Cuenta atrás para nuestra boda</h1>
-    <div class="countdown">
-        <div><span id="days">0</span>Días</div>
-        <div><span id="hours">0</span>Horas</div>
-        <div><span id="minutes">0</span>Minutos</div>
-        <div><span id="seconds">0</span>Segundos</div>
-    </div>
+    <section class="hero">
+        <h1>Elena & Andrés</h1>
+        <h2>¡Nos casamos!</h2>
+        <p>Estás invitado a compartir este día tan especial con nosotros.</p>
+        <div class="scroll-down">
+            <a href="#detalle">
+                <button class="scroll-button">Ver más</button>
+            </a>
+        </div>
+    </section>
+
+    <section class="section" id="detalle">
+        <h3>Reserva la fecha</h3>
+        <p>
+            El gran día será inolvidable, y nos encantará compartirlo contigo.<br />
+            Muy pronto encontrarás aquí toda la información: lugar, hora, confirmación de asistencia y mucho más.
+        </p>
+
+        <h3>Cuenta atrás para nuestra boda</h3>
+        <div class="countdown">
+            <div><span id="days">0</span>Días</div>
+            <div><span id="hours">0</span>Horas</div>
+            <div><span id="minutes">0</span>Minutos</div>
+            <div><span id="seconds">0</span>Segundos</div>
+        </div>
+    </section>
 
     <script>
         // Cambia la fecha aquí (año, mes-1, día, hora, min, seg)
