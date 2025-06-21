@@ -163,43 +163,59 @@
         </p>
 
         <h3>Cuenta atrás para nuestra boda</h3>
-        <div class="countdown">
-            <div><span id="days">0</span>Días</div>
-            <div><span id="hours">0</span>Horas</div>
-            <div><span id="minutes">0</span>Minutos</div>
-            <div><span id="seconds">0</span>Segundos</div>
+        <div class="countdown" style="text-align: center; font-size: 1.5rem; color: #374709;">
+            <p><span id="months">0</span> meses</p>
+            <p><span id="days">0</span> días</p>
+            <p><span id="hours">0</span> horas</p>
+            <p><span id="minutes">0</span> minutos</p>
+            <p><span id="seconds">0</span> segundos</p>
         </div>
     </section>
 
     <script>
-        // Cambia la fecha aquí (año, mes-1, día, hora, min, seg)
-        const weddingDate = new Date(2026, 6, 20, 19, 0, 0); // 20 Jun 2026, 19:00
-
+        <!-- Fecha de la boda: 20 de julio de 2026, 19:00 (recuerda: mes 6 = julio en JS) -->
+        const weddingDate = new Date(2026, 6, 20, 19, 0, 0);
+    
         function updateCountdown() {
             const now = new Date();
-            const diff = weddingDate - now;
-
-            if (diff <= 0) {
+    
+            if (weddingDate <= now) {
                 document.querySelector('.countdown').innerHTML = "<h2>¡Nos hemos casado! 🎉</h2>";
                 clearInterval(interval);
                 return;
             }
-
+    
+            <!-- Cálculo de meses completos entre las dos fechas -->
+            let years = weddingDate.getFullYear() - now.getFullYear();
+            let months = weddingDate.getMonth() - now.getMonth() + years * 12;
+    
+            <!-- Crear una fecha intermedia con los meses completos añadidos -->
+            let intermediate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+    
+            <!-- Si la fecha intermedia es en el futuro, retrocede un mes para que sea el último mes completo -->
+            if (intermediate > weddingDate) {
+                months--;
+                intermediate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+            }
+    
+            const diff = weddingDate - intermediate;
+    
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
             const minutes = Math.floor((diff / (1000 * 60)) % 60);
             const seconds = Math.floor((diff / 1000) % 60);
-
+    
+            <!-- Mostrar resultados -->
+            document.getElementById('months').textContent = months;
             document.getElementById('days').textContent = days;
             document.getElementById('hours').textContent = hours;
             document.getElementById('minutes').textContent = minutes;
             document.getElementById('seconds').textContent = seconds;
         }
-
+    
         updateCountdown();
         const interval = setInterval(updateCountdown, 1000);
-    </script>
-
+</script>
     <!-- WHERELINE -->
 
     <section style="background-color: #f2f2ef; padding: 3rem 1rem;">
