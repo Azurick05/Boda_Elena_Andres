@@ -200,28 +200,43 @@
         const interval = setInterval(updateCountdown, 1000);
     </script>
 
+    // WHERELINE
+
     <section style="background-color: #f2f2ef; padding: 3rem 1rem;">
       <h2 style="text-align: center; color: #374709; font-size: 2rem; margin-bottom: 2rem;">
         ¿Dónde será la boda?
       </h2>
     
-      <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
-        
-        <div style="text-align: center; max-width: 200px;">
-          <img src="img/Basilica de Santa Eulalia GIMP.png" alt="Iglesia" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
+      <div style="position: relative; display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap;">
+    
+        <!-- Línea de conexión -->
+        <div style="
+          position: absolute;
+          top: 50%;
+          left: 10%;
+          width: 80%;
+          height: 2px;
+          background-color: #374709;
+          z-index: 0;
+        "></div>
+    
+        <!-- Lugar 1 -->
+        <div style="text-align: center; max-width: 200px; position: relative; z-index: 1;">
+          <img src="img/Basilica de Santa Eulalia GIMP.png" alt="Iglesia" style="width: 100%; object-fit: contain;" />
           <h3 style="color: #374709; margin-top: 1rem;">Ceremonia</h3>
           <p>Basílica de Santa Eulalia</p>
         </div>
     
-    
-        <div style="text-align: center; max-width: 200px;">
-          <img src="img/Lavadero de lanas GIMP.png" alt="Hotel" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
+        <!-- Lugar 2 -->
+        <div style="text-align: center; max-width: 200px; position: relative; z-index: 1;">
+          <img src="img/Lavadero de lanas GIMP.png" alt="Hotel" style="width: 100%; object-fit: contain;" />
           <h3 style="color: #374709; margin-top: 1rem;">Celebración</h3>
           <p>Lavadero de Lanas</p>
         </div>
     
       </div>
     </section>
+
 
 </body>
 
