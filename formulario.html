@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario RSVP</title>
+    <link rel="stylesheet" href="assets\css\base.css" />
+    <link rel="stylesheet" href="assets\css\header.css" />
+    <link rel="stylesheet" href="assets\css\footer.css" />
+    <link rel="stylesheet" href="assets\css\secciones.css" />
+    <link rel="stylesheet" href="assets\css\formulario.css" />
+    <script src="assets\js\main.js" defer></script>
+</head>
+
+<body>
+    <!-- Header se carga automáticamente con JS -->
+
+    <section class="portada-formulario">
+        <div class="contenido-portada">
+            <h1>Nos haría mucha ilusión que vinieras</h1>
+            <p>Confirma tu asistencia con este pequeño formulario</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="seccion-rsvp">
+            <h2>Confirma tu asistencia</h2>
+            <p>Por favor, rellena este formulario antes del 1 de agosto</p>
+
+            <form class="formulario-rsvp" id="form-rsvp" action="https://script.google.com/macros/s/AKfycbyI5JEiVtopq5Og5Dv7t2UAxi3hnBllKx7hbfR9KTpqCcgRAGDXdHQZIQXl3jL_5udLkw/exec" method="POST" target="_blank">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="Nombre" required />
+                
+                <label for="apellidos">Apellidos</label>
+                <input type="text" id="apellidos" name="Apellidos" required />
+                
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="Correo electrónico" required />
+                
+                <label for="asistencia">¿Asistirás?</label>
+                <select id="asistencia" name="¿Asistirás?" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Sí">Sí, con muchas ganas</option>
+                    <option value="No">Con tristeza, no podré</option>
+                </select>
+                
+                <label for="acompanantes">Nombres de tus acompañantes</label>
+                <textarea id="acompanantes" name="Nombre de tus acompañantes" rows="5"></textarea>
+                
+                <label for="restricciones">¿Tienes alguna restricción alimentaria?</label>
+                <input type="text" id="restricciones" name="¿Tienes alguna restricción alimentaria?" />
+                
+                <label for="origen">¿De qué parte vienes?</label>
+                <select id="origen" name="¿De qué parte vienes?">
+                    <option value="">--</option>
+                    <option value="Familia González Méndez">Familia González Méndez</option>
+                    <option value="Familia Morcillo Balboa">Familia Morcillo Balboa</option>
+                    <option value="Familia Dorado Arias">Familia Dorado Arias</option>
+                    <option value="Amigos familia González Morcillo">Amigos familia González Morcillo</option>
+                    <option value="Amigos familia Dorado Arias">Amigos familia Dorado Arias</option>
+                    <option value="Otro">Otro</option>
+                </select>
+                
+                <label for="comentarios">Preguntas o comentarios</label>
+                <textarea id="comentarios" name="Preguntas o comentarios" rows="3"></textarea>
+                
+                <button type="submit">Confirmar asistencia</button>
+            </form>
+            <div id="mensaje-confirmacion" style="display: none; margin-top: 2rem; color: green; font-weight: bold;">
+                ¡Gracias por rellenar el formulario!        </div>
+        </section>
+    </main>
+
+    <!-- Footer se carga automáticamente con JS -->
+
+    <script>
+        document.getElementById("form-rsvp").addEventListener("submit", function (e) {
+            e.preventDefault(); // Evita el envío normal
+
+            const form = e.target;
+            const datos = new FormData(form);
+
+            fetch("https://script.google.com/macros/s/AKfycbyI5JEiVtopq5Og5Dv7t2UAxi3hnBllKx7hbfR9KTpqCcgRAGDXdHQZIQXl3jL_5udLkw/exec", {
+                method: "POST",
+                body: datos
+            })
+                .then(respuesta => respuesta.text())
+                .then(() => {
+                    document.getElementById("mensaje-confirmacion").style.display = "block";
+                    form.reset(); // Limpia el formulario
+                })
+                .catch(error => {
+                    alert("Hubo un error al enviar tu respuesta. Inténtalo de nuevo.");
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+
+</html>
+
+  

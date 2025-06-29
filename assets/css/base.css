@@ -1,0 +1,66 @@
+/* ============================
+   VARIABLES Y TIPOGRAFÍA BASE
+=============================== */
+
+:root {
+    --blanco-suave: #f4f1ee;
+    --verde-pastel: #ABB8A4;
+    --marron-claro: #C6AF8E;
+    --texto-principal: #192C19;
+    --titulo: #4A6441;
+    --acento: #B67646;
+    --max-width: 1100px;
+    --fuente-principal: 'Open Sans', sans-serif;
+    --fuente-titulos: 'Playfair Display', serif;
+}
+
+/* =====================
+     RESET BÁSICO
+  ======================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--blanco-suave);
+    color: var(--texto-principal);
+    line-height: 1.6;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* =====================
+     ELEMENTOS GENERALES
+  ======================== */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none; }

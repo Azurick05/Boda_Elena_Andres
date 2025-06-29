@@ -1,0 +1,67 @@
+/* ============================
+   COMPONENTES REUTILIZABLES
+=============================== */
+
+/* Botones principales */
+.btn {
+    background-color: var(--acento);
+    color: var(--blanco-suave);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #9f5a35;
+}
+
+/* Botón alternativo claro */
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--acento);
+    color: var(--acento);
+}
+
+.btn-outline:hover {
+    background-color: var(--acento);
+    color: var(--blanco-suave);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--marron-claro);
+    border-radius: 6px;
+    background-color: #fff;
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--acento);
+    box-shadow: 0 0 0 2px rgba(182, 118, 70, 0.25);
+}
+
+/* Decoración para subtítulos o bloques */
+.decorado {
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--acento);
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,118 @@
+/* ======================
+   ESTILOS PARA SECCIONES
+========================= */
+
+section {
+    padding: 4rem 1.5rem;
+    max-width: none;
+    margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--titulo);
+}
+
+/* Textos dentro de sección */
+section p {
+    font-size: 1rem;
+    color: var(--texto-principal);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+
+#nosotros {
+    background-color: var(--verde-pastel);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+
+/* Línea del tiempo (Horario) */
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+/* Bloques comunes */
+.timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.timeline-item .icono {
+    flex-shrink: 0;
+}
+
+.timeline-item .icono img {
+    width: 300px;    /* Controlas el ancho */
+    height: auto;    /* Altura automática según proporción */
+    object-fit: contain;    /* No recorta, muestra todo */
+    border-radius: 0;    /* Quita el redondeado si lo tenías */
+}
+
+/* Alternancia */
+.timeline-item.izquierda {
+    flex-direction: row;
+}
+
+.timeline-item.derecha {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+/* Texto */
+.timeline-item .contenido {
+    max-width: none;
+}
+
+.timeline-item h4 {
+    margin: 0 0 0.3rem;
+    font-family: var(--fuente-titulos);
+    color: var(--titulo);
+}
+
+.timeline-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--texto-principal);
+    line-height: 1.6;
+}
+
+
+/* ================================
+   ESTILOS PARA SECCIONES / MOVIL
+=================================== */
+
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+    }
+
+    .timeline-item .icono img {
+        width: 250px;
+        /* más pequeño para móviles */
+    }
+
+    .timeline-item.derecha .contenido {
+        text-align: center;
+    } 
+    
+    #nosotros {
+        background-color: var(--verde-pastel);
+        padding: 3rem 1rem;
+        text-align: center;
+    }
+}
