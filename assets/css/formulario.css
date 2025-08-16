@@ -15,6 +15,7 @@
     text-align: center;
     color: white;
     position: relative;
+    /* Añadido para asegurar que el contenido esté centrado vertical y horizontalmente */
 }
 
 .portada-formulario::after {
@@ -33,24 +34,87 @@
     position: relative;
     z-index: 2;
     font-family: var(--fuente-titulos);
-    padding: 0 1.5rem;
+    padding: 2rem 2.5rem;
+    /* Más padding para el recuadro */
+    background-color: rgba(255, 255, 255, 0.400);
+    /* Fondo semi-transparente oscuro para contraste */
+    border-radius: 50px;
+    /* Esquinas redondeadas */
+    backdrop-filter: blur(2px);
+    /* Efecto de desenfoque ligero para un toque moderno (si el navegador lo soporta) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra sutil para darle profundidad */
+    max-width: 80%;
+    /* Asegura que no sea demasiado ancho en pantallas grandes */
+    margin: 0 auto;
+    /* Centra el recuadro si max-width es menor que el contenedor */
+    transition: all 0.3s ease;
+    /* Transición suave para posibles animaciones */
 }
 
 .contenido-portada h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.8rem;
+    /* Tamaño de fuente más grande para el título */
+    margin-bottom: 0.75rem;
+    /* Más espacio debajo del título */
+    color: #fff;
+    /* Asegura que el color sea blanco puro para contraste */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Sombra de texto para que resalte más */
 }
 
 .contenido-portada p {
-    font-size: 1.1rem;
-    font-family: var(--texto-principal);
-    color: var(--blanco-suave);
+    font-size: 1.4rem;
+    /* Tamaño de fuente más grande para el subtítulo */
+    font-family: var(--fuente-principal, 'Open Sans', sans-serif);
+    /* Usar fuente principal si está definida, sino una alternativa */
+    color: #f0f0f0;
+    /* Un blanco un poco más suave */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    /* Sombra de texto similar */
+}
+
+/* --- Media Queries para responsividad --- */
+
+@media (max-width: 768px) {
+    .contenido-portada {
+        padding: 1.5rem 2rem;
+        border-radius: 10px;
+    }
+
+    .contenido-portada h1 {
+        font-size: 2.2rem;
+    }
+
+    .contenido-portada p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portada-formulario {
+        height: 40vh;
+        /* Un poco menos alto en móviles muy pequeños */
+    }
+
+    .contenido-portada {
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+    }
+
+    .contenido-portada h1 {
+        font-size: 1.8rem;
+    }
+
+    .contenido-portada p {
+        font-size: 1rem;
+    }
 }
 
 
-
+/* Estilos para el formulario en sí (se mantienen del anterior CSS que proporcionaste) */
 .seccion-rsvp {
-    background-color: var(--blanco-suave);
+    background-color: rgba(255, 255, 255, 0.534);
     padding: 4rem 1.5rem;
     text-align: center;
 }
@@ -112,4 +176,60 @@
 
 .formulario-rsvp button:hover {
     background-color: #995c38;
+}
+
+/* =======================================
+   ESTILOS PARA LA FLOR CON SCROLL PROGRESIVO
+========================================== */
+
+#flor-animada {
+    position: absolute;
+    /* Posicionada respecto a su contenedor padre (#flor-animada-container) */
+    opacity: 0;
+    /* Inicialmente invisible */
+    transition: opacity 0.8s ease-out;
+    /* Transición suave solo para la opacidad */
+    pointer-events: none;
+    /* Permite hacer clic a través de la flor */
+    z-index: 10;
+    /* Asegura que esté por encima del contenido normal */
+
+    /* Posiciona la flor dentro de su contenedor. Ajusta según donde quieras que aparezca. */
+    top: -30px;
+    /* Ejemplo: 30px por encima del inicio del contenedor */
+    left: 20px;
+    /* Ejemplo: 20px desde el borde izquierdo del contenedor */
+
+    /* Tamaño de la flor */
+    width: 80px;
+    /* Ajusta el tamaño deseado para la flor */
+    height: auto;
+
+    /* Opcional: Rotación o ligera transformación si quieres un poco de estilo inicial */
+    transform: rotate(15deg);
+}
+
+/* Cuando esta clase se añada, la flor será completamente visible */
+#flor-animada.flor-visible {
+    opacity: 1;
+}
+
+/* Opcional: Si quieres un efecto de "movimiento" ligero una vez visible */
+/* Esto se aplicaría cuando opacity es 1, si lo deseas */
+#flor-animada.flor-animada-movimiento {
+    animation: ligero-movimiento 10s ease-in-out infinite alternate;
+}
+
+@keyframes ligero-movimiento {
+    0% {
+        transform: rotate(15deg) translateY(0px);
+    }
+
+    50% {
+        transform: rotate(18deg) translateY(-5px);
+    }
+
+    100% {
+        transform: rotate(15deg) translateY(0px);
+    }
 }

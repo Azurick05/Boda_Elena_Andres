@@ -1,0 +1,63 @@
+/* =======================================
+   ESTILOS PARA LA SECCIÓN DEL CONTADOR
+========================================== */
+
+.seccion-contador {
+    padding: 4rem 1rem;
+    text-align: center;
+    background-color: #fdfaf7;
+    /* Un color crema muy suave, puedes cambiarlo por var(--blanco-roto) si tienes uno */
+}
+
+.seccion-contador h2 {
+    margin-bottom: 0.5rem;
+    /* Ajusta el espacio bajo el título principal */
+}
+
+/* El estilo para el subtítulo .decorado ya lo tienes en components.css */
+
+#cuenta-atras {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#cuenta-atras .tiempo {
+    min-width: 100px;
+}
+
+#cuenta-atras span {
+    display: block;
+    font-family: var(--fuente-titulos, 'Playfair Display', serif);
+    font-size: 5rem;
+    font-weight: 500;
+    color: var(--acento, #b67646);
+    /* Usamos el color de acento para los números */
+    line-height: 1.1;
+}
+
+#cuenta-atras p {
+    font-family: var(--fuente-principal, 'Open Sans', sans-serif);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--texto-principal, #555);
+    /* Un color de texto oscuro genérico */
+    margin: 0;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 480px) {
+    #cuenta-atras {
+        gap: 1rem;
+    }
+
+    #cuenta-atras .tiempo {
+        min-width: 70px;
+    }
+
+    #cuenta-atras span {
+        font-size: 3.5rem;
+    }
+}

@@ -64,3 +64,17 @@ button {
     cursor: pointer;
     border: none;
     background: none; }
+
+
+/* =====================
+     ESTILOS DEL HORARIO - TIMELINE Y NUESTRA HISTORIA
+======================== */
+#horario {
+    
+    /* max-width: var(--max-width); */
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 0 para margen superior/inferior, auto para izquierda/derecha */
+    padding: 0 10px;
+    /* 0 para padding superior/inferior, 20px para izquierda/derecha */
+}

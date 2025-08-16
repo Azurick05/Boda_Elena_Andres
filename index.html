@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elena & Andrés</title>
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/libs/aos/aos.css" />
 </head>
 
 <body>
@@ -19,6 +18,28 @@
         </div>
         
     </section>
+
+    <section id="contador" class="seccion-contador">
+        <div class="container">
+            <h2>La gran espera</h2>
+            <p class="decorado">comienza la cuenta atrás...</p>
+    
+            <div id="cuenta-atras">
+                <div class="tiempo">
+                    <span id="meses">0</span>
+                    <p>Meses</p>
+                </div>
+                <div class="tiempo">
+                    <span id="dias">0</span>
+                    <p>Días</p>
+                </div>
+                <div class="tiempo">
+                    <span id="horas">0</span>
+                    <p>Horas</p>
+                </div>
+            </div>
+        </div>
+        </section>
 
     <!-- Sobre nosotros -->
     <section id="nosotros">
@@ -34,7 +55,7 @@
         
         <!-- Time Line -->
 
-        <div class="timeline-item izquierda" data-aos="fade-right">
+        <div class="timeline-item izquierda">
             <div class="icono">
                 <img src="assets\images\Basilica de Santa Eulalia GIMP.png" alt="Ceremonia">
             </div>
@@ -44,7 +65,7 @@
             </div>
         </div>
         
-        <div class="timeline-item derecha" data-aos="fade-left">
+        <div class="timeline-item derecha">
             <div class="icono">
                 <img src="assets\images\Lavadero de lanas GIMP.png" alt="Cóctel">
             </div>
@@ -56,14 +77,9 @@
             </div>
     </section>
 
-    
-      
 
-    <script src="assets/libs/aos/aos.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        AOS.init();
-    </script>
+
 </body>
 
 </html>

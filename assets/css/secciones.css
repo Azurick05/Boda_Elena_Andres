@@ -116,3 +116,59 @@ section p {
         text-align: center;
     }
 }
+
+/* =======================================
+   ESTILOS PARA LA FLOR CON SCROLL PROGRESIVO
+========================================== */
+
+#flor-animada {
+    position: absolute;
+    /* Posicionada respecto a su contenedor padre (#flor-animada-container) */
+    opacity: 0;
+    /* Inicialmente invisible */
+    transition: opacity 0.8s ease-out;
+    /* Transición suave solo para la opacidad */
+    pointer-events: none;
+    /* Permite hacer clic a través de la flor */
+    z-index: 10;
+    /* Asegura que esté por encima del contenido normal */
+
+    /* Posiciona la flor dentro de su contenedor. Ajusta según donde quieras que aparezca. */
+    top: -30px;
+    /* Ejemplo: 30px por encima del inicio del contenedor */
+    left: 20px;
+    /* Ejemplo: 20px desde el borde izquierdo del contenedor */
+
+    /* Tamaño de la flor */
+    width: 80px;
+    /* Ajusta el tamaño deseado para la flor */
+    height: auto;
+
+    /* Opcional: Rotación o ligera transformación si quieres un poco de estilo inicial */
+    transform: rotate(15deg);
+}
+
+/* Cuando esta clase se añada, la flor será completamente visible */
+#flor-animada.flor-visible {
+    opacity: 1;
+}
+
+/* Opcional: Si quieres un efecto de "movimiento" ligero una vez visible */
+/* Esto se aplicaría cuando opacity es 1, si lo deseas */
+#flor-animada.flor-animada-movimiento {
+    animation: ligero-movimiento 10s ease-in-out infinite alternate;
+}
+
+@keyframes ligero-movimiento {
+    0% {
+        transform: rotate(15deg) translateY(0px);
+    }
+
+    50% {
+        transform: rotate(18deg) translateY(-5px);
+    }
+
+    100% {
+        transform: rotate(15deg) translateY(0px);
+    }
+}
