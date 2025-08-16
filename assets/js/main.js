@@ -1,25 +1,21 @@
 // Espera a que la página esté cargada antes de ejecutar cualquier script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // =======================================
-    // Lógica para cargar el Header con fetch
-    // =======================================
     fetch('components/header.html')
         .then(res => res.text())
         .then(data => {
-            // Inserta el HTML del header al principio del body
+            // El resto de la lógica para el header DEBE estar aquí dentro
             document.body.insertAdjacentHTML('afterbegin', data);
 
-            // AHORA que el header existe en la página, podemos seleccionarlo y trabajar con él
-            const toggle = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('.nav-links');
             const header = document.querySelector('.header');
 
-            // Lógica para el header con scroll
             const evaluarHeader = () => {
-                if (!header) return;
-                console.log("Posición de scroll:", window.scrollY);
-                if (window.scrollY > 2) {
+                if (!header) {
+                    console.error("Error: Header element not found.");
+                    return;
+                }
+                console.log("Scroll position:", window.scrollY);
+                if (window.scrollY > 20) {
                     header.classList.add('scrolled');
                     header.classList.remove('transparent');
                 } else {
@@ -28,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             };
 
-            // Ejecutar la lógica de scroll al cargar y al hacer scroll
+            // Estas dos líneas son cruciales y deben estar dentro de este bloque
             evaluarHeader();
             window.addEventListener('scroll', evaluarHeader);
 
