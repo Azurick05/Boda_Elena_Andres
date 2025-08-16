@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             // El resto de la lógica para el header DEBE estar aquí dentro
             document.body.insertAdjacentHTML('afterbegin', data);
-
+            
+            const toggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav-links');
             const header = document.querySelector('.header');
 
             const evaluarHeader = () => {

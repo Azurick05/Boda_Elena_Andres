@@ -15,6 +15,8 @@
     text-align: center;
     color: white;
     position: relative;
+    padding-top: 300px;
+    padding-bottom: 200px;
     /* Añadido para asegurar que el contenido esté centrado vertical y horizontalmente */
 }
 
@@ -36,7 +38,7 @@
     font-family: var(--fuente-titulos);
     padding: 2rem 2.5rem;
     /* Más padding para el recuadro */
-    background-color: rgba(255, 255, 255, 0.400);
+    background-color: rgba(255, 255, 255, 0.600);
     /* Fondo semi-transparente oscuro para contraste */
     border-radius: 50px;
     /* Esquinas redondeadas */
@@ -57,7 +59,7 @@
     /* Tamaño de fuente más grande para el título */
     margin-bottom: 0.75rem;
     /* Más espacio debajo del título */
-    color: #fff;
+    color: #214627;
     /* Asegura que el color sea blanco puro para contraste */
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     /* Sombra de texto para que resalte más */
@@ -68,7 +70,7 @@
     /* Tamaño de fuente más grande para el subtítulo */
     font-family: var(--fuente-principal, 'Open Sans', sans-serif);
     /* Usar fuente principal si está definida, sino una alternativa */
-    color: #f0f0f0;
+    color:#214627;
     /* Un blanco un poco más suave */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     /* Sombra de texto similar */
