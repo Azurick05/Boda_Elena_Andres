@@ -83,6 +83,11 @@
     .contenido-portada p {
         font-size: 1rem;
     }
+   .portada .flecha-abajo {
+        bottom: 20px; /* Posiciona la flecha un poco más arriba y con un valor fijo */
+        width: 15px;
+        height: 15px;
+    }
 }
 
 /* ====================
@@ -129,4 +134,5 @@
     60% {
         transform: translateY(-5px) rotate(45deg);
     }
+
 }
