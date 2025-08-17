@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('components/header.html')
         .then(res => res.text())
         .then(data => {
-            // El resto de la lógica para el header DEBE estar aquí dentro
             document.body.insertAdjacentHTML('afterbegin', data);
             
             const toggle = document.querySelector('.menu-toggle');
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error("Error: Header element not found.");
                     return;
                 }
-                console.log("Scroll position:", window.scrollY);
                 if (window.scrollY > 20) {
                     header.classList.add('scrolled');
                     header.classList.remove('transparent');
@@ -119,4 +117,38 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             document.body.insertAdjacentHTML('beforeend', data);
         });
+    
+    // =======================================
+    // Smoth Scroll para flecha abajo
+    // =======================================
+    const flechaAbajo = document.querySelector('.flecha-abajo');
+
+    if (flechaAbajo) {
+        flechaAbajo.addEventListener('click', function (e) {
+            // Evita el comportamiento predeterminado del enlace (salto brusco)
+            e.preventDefault();
+
+            // Obtiene el ID del destino desde el atributo href
+            const destinoId = this.getAttribute('href');
+            const seccionDestino = document.querySelector(destinoId);
+
+            // Si la sección de destino existe, haz el scroll
+            if (seccionDestino) {
+                seccionDestino.scrollIntoView({
+                    behavior: 'smooth' // Esta propiedad habilita el scroll suave
+                });
+            }
+        });
+    }
+
+    // =======================================
+    // Comprobración de soporte para scroll-behavior: smooth;
+    // =======================================
+    const soportaSmoothScroll = 'scrollBehavior' in document.documentElement.style;
+
+    if (soportaSmoothScroll) {
+        console.log('El navegador soporta scroll-behavior: smooth;');
+    } else {
+        console.log('El navegador NO soporta scroll-behavior: smooth; Se necesita un script para el scroll suave.');
+    }
 });

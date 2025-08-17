@@ -12,8 +12,9 @@ section h2 {
     text-align: center;
     font-family: var(--fuente-titulos);
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     color: var(--titulo);
+    padding: 0rem 0.5rem;
 }
 
 /* Textos dentro de sección */
@@ -31,6 +32,7 @@ section p {
     text-align: center;
 }
 
+
 #nosotros p {
     /* Aquí va el estilo que quieres aplicar */
         max-width: 1200px;
@@ -42,8 +44,30 @@ section p {
         line-height: 1.6;
         text-align: center;
         /* O la alineación que prefieras */
+        padding: 1rem 0rem;
 }
 
+/* =====================
+     ESTILOS DEL HORARIO - TIMELINE
+======================== */
+#horario {
+    max-width: 1100px;
+    margin: 0 auto;
+    /* 0 para margen superior/inferior, auto para izquierda/derecha */
+}
+
+#horario h2 span{
+    /* Mantenemos el padding que crea espacio alrededor del texto */
+    padding: 0.1rem 0.75rem;
+
+    /* MODIFICACIONES PARA EL EFECTO DE FONDO DESCENTRADOS */
+    background-image: linear-gradient(to left, rgba(207, 169, 114, 0.4), rgba(207, 169, 114, 0.4));
+    background-repeat: no-repeat;
+    /* El truco: movemos la posición del fondo usando background-position */
+    background-position: -41px 25px;
+    /* Y le decimos que el origen del fondo es el borde del padding */
+    background-origin: content-box;
+}
 
 /* Línea del tiempo (Horario) */
 .timeline {
@@ -102,16 +126,7 @@ section p {
     line-height: 1.6;
 }
 
-/* =====================
-     ESTILOS DEL HORARIO - TIMELINE
-======================== */
-#horario {
-    max-width: 1100px;
-    margin: 0 auto;
-    /* 0 para margen superior/inferior, auto para izquierda/derecha */
-    padding: 0 10px;
-    /* 0 para padding superior/inferior, 20px para izquierda/derecha */
-}
+
 
 
 /* ================================
