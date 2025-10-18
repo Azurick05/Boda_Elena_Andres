@@ -92,7 +92,7 @@ section p {
 }
 
 .timeline-item .icono img {
-    width: 300px;    /* Controlas el ancho */
+    width: 450px;    /* Controlas el ancho */
     height: auto;    /* Altura automática según proporción */
     object-fit: contain;    /* No recorta, muestra todo */
     border-radius: 0;    /* Quita el redondeado si lo tenías */
@@ -141,7 +141,7 @@ section p {
     }
 
     .timeline-item .icono img {
-        width: 250px;
+        width: 450px;
         /* más pequeño para móviles */
     }
 

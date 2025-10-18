@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario RSVP</title>
+    <link rel="stylesheet" href="assets\css\main.css" />
     <link rel="stylesheet" href="assets\css\base.css" />
     <link rel="stylesheet" href="assets\css\header.css" />
     <link rel="stylesheet" href="assets\css\footer.css" />
@@ -40,9 +41,9 @@
                 
                 <label for="asistencia">¿Asistirás?</label>
                 <select id="asistencia" name="¿Asistirás?" required>
-                    <option value="">Selecciona una opción</option>
-                    <option value="Sí">Sí, con muchas ganas</option>
-                    <option value="No">Con tristeza, no podré</option>
+                    <option value="" disable selected>Selecciona una opción</option>
+                    <option value="Sí">Sí, con muchas ganas!</option>
+                    <option value="No">Con tristeza, no podré asistir</option>
                 </select>
                 
                 <label for="acompanantes">Nombres de tus acompañantes</label>
@@ -60,7 +61,7 @@
                     <option value="Amigos - familia González Morcillo">Amigos - familia González Morcillo</option>
                     <option value="Amigos - familia Dorado Arias">Amigos - familia Dorado Arias</option>
                     <option value="Amigos de los novios">Amigos de los novios</option>
-                    <option value="Otro">Otro</option>
+                    <option value="Otro">-</option>
                 </select>
                 
                 <label for="comentarios">Preguntas o comentarios</label>
