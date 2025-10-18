@@ -61,35 +61,6 @@
     }
 }
 
-
-/* ====================
-   PORTADA / HERO / MOVIL
-======================= */
-
-@media (max-width: 768px) {
-    .portada {
-        height: 90vh;
-        align-items: center;
-        /* Centrado vertical en móvil */
-        padding-bottom: 2rem;
-        padding-top: 4rem;
-        align-items: center;
-    }
-
-    .contenido-portada h1 {
-        font-size: 2.2rem;
-    }
-
-    .contenido-portada p {
-        font-size: 1rem;
-    }
-   .portada .flecha-abajo {
-        bottom: 20px; /* Posiciona la flecha un poco más arriba y con un valor fijo */
-        width: 15px;
-        height: 15px;
-    }
-}
-
 /* ====================
    FLECHA DE SCROLL
 ======================= */
@@ -113,7 +84,7 @@
     transform: translateX(-50%) rotate(45deg);
     /* Centra y gira para formar la punta */
     animation: bounce 5s infinite;
-        /* Animación de "rebote" */
+    /* Animación de "rebote" */
 }
 
 /* Animación para el efecto de rebote */
@@ -134,5 +105,34 @@
     60% {
         transform: translateY(-5px) rotate(45deg);
     }
-
 }
+
+
+/* ====================
+   PORTADA / HERO / MOVIL
+======================= */
+
+@media (max-width: 768px) {
+    .portada {
+        height: 90vh;
+        align-items: center;
+        /* Centrado vertical en móvil */
+        padding-bottom: 2rem;
+        padding-top: 4rem;
+        align-items: center;
+    }
+
+    .contenido-portada h1 {
+        font-size: 2.2rem;
+    }
+
+    .contenido-portada p {
+        font-size: 1rem;
+    }
+    .portada .flecha-abajo {
+        bottom: 20px; /* Posiciona la flecha un poco más arriba y con un valor fijo */
+        width: 15px;
+        height: 15px;
+    }
+}
+
