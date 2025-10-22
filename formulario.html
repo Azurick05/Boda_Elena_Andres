@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulario RSVP</title>
+    <title>Formulario</title>
     <link rel="stylesheet" href="assets\css\main.css" />
     <link rel="stylesheet" href="assets\css\base.css" />
     <link rel="stylesheet" href="assets\css\header.css" />
@@ -47,21 +47,23 @@
                 </select>
                 
                 <label for="acompanantes">Nombres de tus acompañantes</label>
-                <textarea id="acompanantes" name="Nombre de tus acompañantes" rows="5"></textarea>
+                <textarea id="acompanantes" name="Nombres de tus acompañantes" rows="5"></textarea>
                 
                 <label for="restricciones">¿Tienes alguna restricción alimentaria?</label>
                 <input type="text" id="restricciones" name="¿Tienes alguna restricción alimentaria?" />
                 
-                <label for="origen">¿De qué parte vienes?</label>
+                <label for="origen" style="display: flex; align-items: center; gap: 0.5em;">
+                    ¿De qué parte vienes?
+                    <span style="color: gray; font-size: 0.7em;"><i>solo para categorizar el formulario</i></span>
+                </label>
                 <select id="origen" name="¿De qué parte vienes?">
                     <option value="">--</option>
                     <option value="Familia González Méndez">Familia González Méndez</option>
                     <option value="Familia Morcillo Balboa">Familia Morcillo Balboa</option>
                     <option value="Familia Dorado Arias">Familia Dorado Arias</option>
-                    <option value="Amigos - familia González Morcillo">Amigos - familia González Morcillo</option>
-                    <option value="Amigos - familia Dorado Arias">Amigos - familia Dorado Arias</option>
+                    <option value="Amigos - familia González Morcillo">Amigos de familia González Morcillo</option>
+                    <option value="Amigos - familia Dorado Arias">Amigos de familia Dorado Arias</option>
                     <option value="Amigos de los novios">Amigos de los novios</option>
-                    <option value="Otro">-</option>
                 </select>
                 
                 <label for="comentarios">Preguntas o comentarios</label>

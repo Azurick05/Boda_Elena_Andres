@@ -4,7 +4,7 @@
 
 footer {
     background-color: var(--marron-claro);
-    color: var(--blanco-suave);
+    color: var(--texto-principal);
     text-align: center;
     padding: 2rem 1rem;
     margin-top: 4rem;
@@ -19,7 +19,7 @@ footer p {
 
 footer small {
     font-size: 0.8rem;
-    color: var(--blanco-suave);
+    color: var(--texto-principal);
 }
 
 @media (max-width: 768px) {

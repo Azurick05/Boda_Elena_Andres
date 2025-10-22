@@ -1,0 +1,66 @@
+body {
+    font-family: 'Epilogue', sans-serif;
+    background-color: #f4f1ee;
+    /* fondo claro similar a background-light */
+    color: #192C19;
+    /* color texto similar a text-green */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+div.container {
+    min-height: 100vh;
+    padding: 1.5rem;
+    background-color: #f4f1ee;
+    /* fondo claro */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+
+h1 {
+    font-size: 1.125rem;
+    /* text-lg */
+    font-weight: 700;
+    /* font-bold */
+    color: #4A6441;
+    /* title-green */
+    margin: 0;
+}
+
+main.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    main.gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.image-card {
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    /* shadow-md */
+    transition: box-shadow 0.3s ease;
+}
+
+.image-card:hover {
+    box-shadow: 0 10px 15px rgb(0 0 0 / 0.2);
+    /* shadow-xl on hover */
+}
+
+.image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
