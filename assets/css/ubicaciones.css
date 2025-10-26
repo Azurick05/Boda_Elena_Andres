@@ -1,5 +1,5 @@
 .portada-ubicaciones {
-    background-image: url('../images/galeria/PuenteLusitania169sinmarca.png');
+    background-image: url('../images/galeria/Teatro_romano.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -64,7 +64,7 @@
 
 .lugar h3{
     font-family: var(--fuente-titulos);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-top: 2rem;
     margin-bottom: 0rem;
     color: var(--titulo);

@@ -128,6 +128,73 @@ section p {
 }
 
 
+#formulario {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: var(--verde-pastel);
+    gap: 0;
+    /* quitar el gap para controlar margen individual */
+}
+
+#formulario h2 {
+    margin: 0 0 0.8rem 0;
+    text-align: center;
+    font-family: var(--fuente-titulos);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--titulo);
+    padding: 0rem 0.5rem;
+}
+
+#formulario p {
+    margin: 0 0 3rem 0;
+    /* margen abajo solo entre párrafos */
+    font-size: 1rem;
+    color: var(--texto-principal);
+    line-height: 1.6;
+    text-align: center;
+}
+
+.contenedor-centro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1vh;
+    /* Ocupa toda la altura visible de la ventana */
+}
+
+
+.card {
+    box-sizing: border-box;
+    width: 170px;
+    height: 60px;
+    background: rgba(217, 217, 217, 0.58);
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: var(--texto-principal);
+}
+
+.card:hover {
+    border: 1px solid black;
+    transform: scale(1.07);
+}
+
+.card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
 
 
 /* ================================
@@ -156,7 +223,5 @@ section p {
         text-align: center;
     }
 }
-
-
 
 
