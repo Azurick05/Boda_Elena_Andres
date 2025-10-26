@@ -132,15 +132,16 @@ section p {
     position: relative;
     display: flex;
     flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
     padding-left: 1rem;
     padding-right: 1rem;
     background-color: var(--verde-pastel);
     gap: 0;
-    /* quitar el gap para controlar margen individual */
 }
 
 #formulario h2 {
-    margin: 0 0 0.8rem 0;
+    margin: 0 0 1rem 0;
     text-align: center;
     font-family: var(--fuente-titulos);
     font-size: 2rem;

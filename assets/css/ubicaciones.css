@@ -1,9 +1,11 @@
+
 .portada-ubicaciones {
     background-image: url('../images/galeria/Teatro_romano.png');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     height: 80vh;
+    max-width: 1344px;
     display: flex;
     align-items: flex-start;
     /* Cambiado centro a arranque */
@@ -41,7 +43,14 @@
 
 #ubicaciones {
     background-color: var(--blanco-suave);
-    padding: 3rem 1rem;
+    padding: 3rem 0rem;
+    text-align: center;
+    gap:0;
+}
+
+#ubicaciones h2{
+    background-color: var(--blanco-suave);
+    padding: 0rem 0rem;
     text-align: center;
 }
 
@@ -88,6 +97,7 @@
         justify-content: flex-start;
         text-align: left;
         /* Un poco menos alto en móviles muy pequeños */
+        background-size: cover;
     }
     .contenido-portada-ubicaciones h1 {
         font-family: var(--fuente-titulos);
