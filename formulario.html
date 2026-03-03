@@ -12,6 +12,31 @@
     <link rel="stylesheet" href="assets\css\secciones.css" />
     <link rel="stylesheet" href="assets\css\formulario.css" />
     <script src="assets\js\main.js" defer></script>
+
+    <style>
+        .pregunta-condicional {
+            display: none;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+            margin-top: 0;
+    
+            /* Estilo visual para destacar que es una sub-pregunta */
+            border-left: 3px solid #c9a96e;
+            /* Cambia el color según tu tema */
+            padding-left: 1rem;
+            margin-left: 0.5rem;
+        }
+    
+        .pregunta-condicional.visible {
+            display: block;
+            max-height: 200px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -27,7 +52,7 @@
     <main>
         <section class="seccion-rsvp">
             <h2>Confirma tu asistencia</h2>
-            <p>Por favor, rellena este formulario antes del 1 de marzo</p>
+            <p>Por favor, rellena este formulario antes del 1 de abril</p>
 
             <form class="formulario-rsvp" id="form-rsvp" action="https://script.google.com/macros/s/AKfycbyI5JEiVtopq5Og5Dv7t2UAxi3hnBllKx7hbfR9KTpqCcgRAGDXdHQZIQXl3jL_5udLkw/exec" method="POST" target="_blank">
                 <label for="nombre">Nombre</label>
@@ -46,11 +71,56 @@
                     <option value="No">Con tristeza, no podré asistir</option>
                 </select>
                 
-                <label for="acompanantes">Nombres de tus acompañantes</label>
+                <label for="acompanantes">Nombres de tus acompañantes
+                    <span style="color: gray; font-size: 0.7em;"><i>En el caso de que no rellenen el formulario</i></span>
+                </label>
                 <textarea id="acompanantes" name="Nombres de tus acompañantes" rows="5"></textarea>
+
+                <!-- Niños - Trona -->
+
+                <label for="niños">¿Llevas niños?</label>
+                <select id="niños" name="¿Llevas niños?" data-condicional-valor="Si"
+                    data-condicional-objetivo="Trona">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
+                <div class="pregunta-condicional" id="Trona">
+                    <label for="pregunta_trona">¿Necesitas trona?</label>
+                    <select id="pregunta_trona" name="¿Necesitas trona?">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
                 
+                <!-- Restricción Alimentaria -->
+
                 <label for="restricciones">¿Tienes alguna restricción alimentaria?</label>
                 <input type="text" id="restricciones" name="¿Tienes alguna restricción alimentaria?" />
+
+                <label for="dieta">¿Tienes alguna dieta especial?</label>
+                <input type="text" id="dieta" name="¿Tienes alguna dieta especial?" />
+
+                <!-- ✅ NUEVO: Pregunta principal con subpregunta condicional -->
+                <label for="plato-principal">¿Qué plato principal prefieres?</label>
+                <select id="plato-principal" name="¿Qué plato principal prefieres?" data-condicional-valor="Carne"
+                    data-condicional-objetivo="pregunta-punto-carne">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Carne">🥩 Carne</option>
+                    <option value="Pescado">🐟 Pescado</option>
+                    <option value="Vegetariano">🍕 Menú infantil</option>
+                </select>
+                
+                <div class="pregunta-condicional" id="pregunta-punto-carne">
+                    <label for="punto-carne">¿Cómo prefieres el punto de la carne?</label>
+                    <select id="punto-carne" name="Punto de la carne">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Al punto">Al punto</option>
+                        <option value="Hecha">Hecha</option>
+                    </select>
+                </div>
+                <!-- FIN bloque condicional -->
                 
                 <label for="origen" style="display: flex; align-items: center; gap: 0.5em;">
                     ¿De qué parte vienes?
@@ -66,7 +136,9 @@
                     <option value="Amigos de los novios">Amigos de los novios</option>
                 </select>
                 
-                <label for="comentarios">Preguntas o comentarios</label>
+                <label for="comentarios">Preguntas o comentarios
+                    <span style="color: gray; font-size: 0.7em;"><i>Se puede indicar la elección de menú principal de los acompañantes</i></span>
+                </label>
                 <textarea id="comentarios" name="Preguntas o comentarios" rows="3"></textarea>
                 
                 <button type="submit">Confirmar asistencia</button>
@@ -108,6 +180,30 @@
                     console.error(error);
                 });
         });
+
+        // ✅ NUEVO: Lógica reutilizable para preguntas condicionales
+            // Busca todos los <select> que tengan data-condicional-valor y data-condicional-objetivo
+            document.querySelectorAll("select[data-condicional-valor]").forEach(function (select) {
+                const valorActivador = select.dataset.condicionalValor;
+                const idObjetivo = select.dataset.condicionalObjetivo;
+                const elementoObjetivo = document.getElementById(idObjetivo);
+
+                if (!elementoObjetivo) return;
+
+                select.addEventListener("change", function () {
+                    if (this.value === valorActivador) {
+                        elementoObjetivo.classList.add("visible");
+                    } else {
+                        elementoObjetivo.classList.remove("visible");
+                        // Limpia el valor al ocultar para no enviar datos irrelevantes
+                        elementoObjetivo.querySelectorAll("select, input, textarea").forEach(function (campo) {
+                            campo.value = "";
+                        });
+                    }
+                });
+            });
+
+            // Fin de lo nuevo
     </script>
 </body>
 
