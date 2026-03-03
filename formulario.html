@@ -174,9 +174,9 @@
             
             </form>
             <div id="mensaje-confirmacion" style="display: none; margin-top: 2rem; color: green; font-weight: bold;">
-                ¡Gracias por rellenar el formulario!        </div>
-            <div id="flor-animada-container" style="position: relative; height: 0;">
-                </div>
+                ¡Gracias por rellenar el formulario!
+            </div>
+            
         </section>
         <section>
             <div class="contenedor-centro">
@@ -203,8 +203,14 @@
             })
                 .then(respuesta => respuesta.text())
                 .then(() => {
+                    // Oculta el formulario y todo lo que le rodea
+                    document.getElementById("form-rsvp").style.display = "none";
+                    document.querySelector(".seccion-rsvp h2").style.display = "none";
+                    document.querySelector(".seccion-rsvp > p").style.display = "none";
+
+                    // Muestra el mensaje de gracias
                     document.getElementById("mensaje-confirmacion").style.display = "block";
-                    form.reset(); // Limpia el formulario
+
                 })
                 .catch(error => {
                     alert("Hubo un error al enviar tu respuesta. Inténtalo de nuevo.");
