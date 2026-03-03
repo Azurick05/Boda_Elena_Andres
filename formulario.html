@@ -71,11 +71,12 @@
                     <option value="No">Con tristeza, no podré asistir</option>
                 </select>
                 
+                <!--
                 <label for="acompanantes">Nombres de tus acompañantes
                     <span style="color: gray; font-size: 0.7em;"><i>En el caso de que no rellenen el formulario</i></span>
                 </label>
                 <textarea id="acompanantes" name="Nombres de tus acompañantes" rows="5"></textarea>
-
+-->
                 <!-- Niños - Trona -->
 
                 <label for="niños">¿Llevas niños?</label>
@@ -107,9 +108,9 @@
                 <select id="plato-principal" name="¿Qué plato principal prefieres?" data-condicional-valor="Carne"
                     data-condicional-objetivo="pregunta-punto-carne">
                     <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Carne">🥩 Carne</option>
-                    <option value="Pescado">🐟 Pescado</option>
-                    <option value="Vegetariano">🍕 Menú infantil</option>
+                    <option value="Carne">Presa ibérica y solomillo de ternera</option>
+                    <option value="Pescado">Bacalao gratén</option>
+                    <option value="Vegetariano">Menú infantil</option>
                 </select>
                 
                 <div class="pregunta-condicional" id="pregunta-punto-carne">
@@ -121,6 +122,14 @@
                     </select>
                 </div>
                 <!-- FIN bloque condicional -->
+
+                <!--
+                <label for="plato-principal-acompañantes">Plato Principal de acompañantes
+                    <span style="color: gray; font-size: 0.7em;"><i>Indicar la elección de menú principal de los
+                            acompañantes</i></span>
+                </label>
+                <textarea id="comentarios" name="Preguntas o comentarios" rows="3"></textarea>
+-->
                 
                 <label for="origen" style="display: flex; align-items: center; gap: 0.5em;">
                     ¿De qué parte vienes?
@@ -135,13 +144,34 @@
                     <option value="Amigos - familia Dorado Arias">Amigos de familia Dorado Arias</option>
                     <option value="Amigos de los novios">Amigos de los novios</option>
                 </select>
-                
+
+                <!-- Acompañantes dinámicos -->
+                <div id="seccion-acompanantes">
+                    <label>Acompañantes
+                        <span style="color: gray; font-size: 0.7em;"><i>Añade un bloque por cada acompañante</i></span>
+                    </label>
+                    <div id="lista-acompanantes"></div>
+                    <button type="button" class="btn-anadir-acompanante" id="btn-anadir">
+                        + Añadir acompañante
+                    </button>
+                </div>
+
+                <label for="autobus">¿Necesitáis autobús?</label>
+                                <select id="autobus" name="¿Necesitáis autobus?">
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+
                 <label for="comentarios">Preguntas o comentarios
                     <span style="color: gray; font-size: 0.7em;"><i>Se puede indicar la elección de menú principal de los acompañantes</i></span>
                 </label>
                 <textarea id="comentarios" name="Preguntas o comentarios" rows="3"></textarea>
-                
-                <button type="submit">Confirmar asistencia</button>
+                               
+
+                <button type="submit">Confirmar asistencia</button>           
+            
+            
             </form>
             <div id="mensaje-confirmacion" style="display: none; margin-top: 2rem; color: green; font-weight: bold;">
                 ¡Gracias por rellenar el formulario!        </div>
@@ -155,6 +185,7 @@
                 </div>
             </div>
         </section>
+        
     </main>
 
     <!-- Footer se carga automáticamente con JS -->
@@ -204,6 +235,99 @@
             });
 
             // Fin de lo nuevo
+
+        // ✅ NUEVO:
+            // ── Lógica condicional reutilizable ──────────────────────────────────────
+        function aplicarLogicaCondicional(contenedor) {
+            contenedor.querySelectorAll("select[data-condicional-valor]").forEach(function (select) {
+                const valorActivador = select.dataset.condicionalValor;
+                const idObjetivo = select.dataset.condicionalObjetivo;
+                const elementoObjetivo = contenedor.querySelector("#" + idObjetivo);
+
+                if (!elementoObjetivo) return;
+
+                select.addEventListener("change", function () {
+                    if (this.value === valorActivador) {
+                        elementoObjetivo.classList.add("visible");
+                    } else {
+                        elementoObjetivo.classList.remove("visible");
+                        elementoObjetivo.querySelectorAll("select, input, textarea").forEach(function (campo) {
+                            campo.value = "";
+                        });
+                    }
+                });
+            });
+        }
+
+        // Aplicar lógica condicional al formulario principal
+        aplicarLogicaCondicional(document.getElementById("form-rsvp"));
+
+
+        // ── Acompañantes dinámicos ───────────────────────────────────────────────
+        let contadorAcompanantes = 0;
+
+        function crearBloqueAcompanante() {
+            contadorAcompanantes++;
+            const n = contadorAcompanantes;
+
+            const div = document.createElement("div");
+            div.classList.add("bloque-acompanante");
+            div.dataset.indice = n;
+
+            div.innerHTML = `
+                <button type="button" class="btn-eliminar-acompanante" title="Eliminar acompañante">✕</button>
+                <div class="titulo-acompanante">Acompañante ${n}</div>
+
+                <label for="ac-nombre-${n}">Nombre y apellidos</label>
+                <input type="text" id="ac-nombre-${n}" name="Acompañante ${n} - Nombre" required />
+
+                <label for="ac-restricciones-${n}">¿Tiene alguna restricción alimentaria?</label>
+                <input type="text" id="ac-restricciones-${n}" name="Acompañante ${n} - Restricción alimentaria" placeholder="Opcional" />
+
+                <label for="ac-dieta-${n}">¿Tiene alguna dieta especial?</label>
+                <input type="text" id="ac-dieta-${n}" name="Acompañante ${n} - Dieta especial" placeholder="Opcional" />
+
+                <label for="ac-plato-${n}">¿Qué plato principal prefiere?</label>
+                <select
+                    id="ac-plato-${n}"
+                    name="Acompañante ${n} - Plato principal"
+                    data-condicional-valor="Carne"
+                    data-condicional-objetivo="ac-carne-${n}">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Carne">Presa ibérica y solomillo de ternera</option>
+                    <option value="Pescado">Bacalao gratén</option>
+                    <option value="Menú infantil">Menú infantil</option>
+                </select>
+
+                <div class="pregunta-condicional" id="ac-carne-${n}">
+                    <label for="ac-punto-${n}">¿Cómo prefiere el punto de la carne?</label>
+                    <select id="ac-punto-${n}" name="Acompañante ${n} - Punto de la carne">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Al punto">Al punto</option>
+                        <option value="Hecha">Hecha</option>
+                    </select>
+                </div>
+            `;
+
+            div.querySelector(".btn-eliminar-acompanante").addEventListener("click", function () {
+                div.remove();
+                contadorAcompanantes--;
+                renumerarAcompanantes();
+            });
+
+            aplicarLogicaCondicional(div);
+            return div;
+        }
+
+        function renumerarAcompanantes() {
+            document.querySelectorAll(".bloque-acompanante").forEach(function (bloque, i) {
+                bloque.querySelector(".titulo-acompanante").textContent = `Acompañante ${i + 1}`;
+            });
+        }
+
+        document.getElementById("btn-anadir").addEventListener("click", function () {
+            document.getElementById("lista-acompanantes").appendChild(crearBloqueAcompanante());
+        });
     </script>
 </body>
 
