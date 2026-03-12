@@ -82,22 +82,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 return;
             }
-            const horas = Math.floor(diferenciaTotalSegundos / 3600) % 24;
+            // 1. Calculamos todo basándonos en el reloj local
             let anios = fechaBoda.getFullYear() - ahora.getFullYear();
             let meses = fechaBoda.getMonth() - ahora.getMonth();
             let dias = fechaBoda.getDate() - ahora.getDate();
+            let horas = fechaBoda.getHours() - ahora.getHours();
+
+            // 2. Si las horas son negativas (ej: son las 20:00 y la boda es a las 19:00)
+            if (horas < 0) {
+                dias--;       // Restamos 1 día porque ese día aún no se ha completado
+                horas += 24;  // Ajustamos las horas para que nos dé las correctas (ej: 23 horas)
+            }
+
+            // 3. Si los días son negativos (seguimos con tu lógica original)
             if (dias < 0) {
                 meses--;
                 const ultimoDiaMesAnterior = new Date(ahora.getFullYear(), ahora.getMonth(), 0).getDate();
                 dias = ultimoDiaMesAnterior + dias;
             }
+
+            // 4. Si los meses son negativos
             if (meses < 0) {
                 anios--;
                 meses += 12;
             }
+
+            // 5. Pintamos los resultados
             if (mesesEl) { mesesEl.innerText = meses; }
             if (diasEl) { diasEl.innerText = dias; }
-            if (horasEl) { horasEl.innerText = String(horas).padStart(1, '0'); }
+            if (horasEl) { horasEl.innerText = String(horas).padStart(1, '0'); } // padStart(2, '0') pone "09" en vez de "9"
         };
 
         actualizarContador();
