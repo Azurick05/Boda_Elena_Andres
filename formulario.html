@@ -194,6 +194,11 @@
 
             const form = e.target;
             const datos = new FormData(form);
+            const btn = form.querySelector("button[type=submit]");
+
+            // Cambia el texto y desactiva el botón
+            btn.textContent = "Enviando...";
+            btn.disabled = true;
 
             fetch("https://script.google.com/macros/s/AKfycbyI5JEiVtopq5Og5Dv7t2UAxi3hnBllKx7hbfR9KTpqCcgRAGDXdHQZIQXl3jL_5udLkw/exec", {
                 method: "POST",
